@@ -1,0 +1,87 @@
+
+## Start Tor
+service tor start/restart/status
+
+
+##
+
+proxychains firefox http:\\www.something.com
+
+/etc/proxychains.conf
+
+always look for SOCKS5 - best to anonomize
+
+
+
+## Use VPNs from vpnbook
+
+openvpn --config *VPN CONFIG FILE*   (usr and pass from vpnbook site)
+
+ - won't pass DNS leak test like this alone though
+
+
+
+
+## DNS Leaks
+
+Search DNS leak test to check - click test. Will show details of your isp nameserver. 
+
+/etc/resolv.conf - List name servers, use open dns nameservers. Own ISP nameserver then hidden.
+
+
+
+DNS uses port 53
+
+
+
+## MAC Address - identifies device on lan / network. doesn't go further than router.
+
+cmd - ifconfig (view hardware info with MAC address)
+
+mac address looks like - ether 08:00:27:63:c4:7a  txqueuelen 1000  (Ethernet)
+
+
+cmd - macchanger --help
+
+cmd - macchanger -s eth0 (also gets mac address, -s = show) 
+
+cmd - macchanger -r eth0 (-r, random mac address)
+
+
+nslookup 192.1.1.4322 - look up ip address, get domain.
+nslookup 
+
+
+
+##### nmap ##### - Scan a network
+
+nmap -v (verbose output)
+
+--help = -iL (pass filename in with list of targets)
+
+
+Perform Scan - ip range, lookup that -oG, scan certain port number, verbose output, redirect output to a file
+
+nmap -oG - 10.0.0.0-100 -p 22 -vv > ~/Desktop/scan
+
+cat scan | grep Up - grep in terminal to get info from scan file.
+
+cat scan | grep Up | awk -F " " '{print $2}' > ~/Desktop/scan2     (field delimiter?)
+
+ - pipe to awk to get just ip's
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
